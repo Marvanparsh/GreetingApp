@@ -63,10 +63,17 @@ public class GreetingController {
         return greetingService.getAllGreetings();
     }
 
+<<<<<<< HEAD
 @PutMapping("/updaterepository/{id}")
 public Greeting updateGreetinginRepository(@PathVariable Long id, @RequestBody Greeting updatedGreeting) {
     return greetingService.updateGreeting(id, updatedGreeting.getMessage());
 }
+=======
+    @PutMapping("/updaterepository/{id}")
+    public Greeting updateGreetinginRepository(@PathVariable Long id, @RequestBody Greeting updatedGreeting) {
+        return greetingService.updateGreeting(id, updatedGreeting.getMessage());
+    }
+>>>>>>> 108ea1c6fa88e4ee178c1129bd0a65db984fb4fe
     @DeleteMapping("deletefromrepo/{id}")
     public ResponseEntity<String> deleteGreetingbyrepository(@PathVariable Long id) {
         try {

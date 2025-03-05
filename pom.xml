@@ -49,6 +49,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+<<<<<<< HEAD
 
 		<!-- JWT (JSON Web Token) Library -->
 		<dependency>
@@ -117,6 +118,10 @@
 	</dependencies>
 
 
+=======
+	</dependencies>
+
+>>>>>>> 108ea1c6fa88e4ee178c1129bd0a65db984fb4fe
 	<build>
 		<plugins>
 			<plugin>

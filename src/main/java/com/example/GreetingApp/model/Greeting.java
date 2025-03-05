@@ -20,4 +20,8 @@ public class Greeting {
 
     public String getMessage() { return message; }
     public void setMessage(String message) { this.message = message; }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 108ea1c6fa88e4ee178c1129bd0a65db984fb4fe
