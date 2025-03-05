@@ -1,9 +1,14 @@
 package com.example.GreetingApp.service;
 import com.example.GreetingApp.DTO.AuthUserDTO;
+<<<<<<< HEAD
 import com.example.GreetingApp.DTO.LoginDTO;
 import com.example.GreetingApp.Exception.UserException;
 import com.example.GreetingApp.Util.EmailSenderService;
 import com.example.GreetingApp.Util.jwttoken;
+=======
+import com.example.GreetingApp.Exception.UserException;
+
+>>>>>>> UC9-Registertheuser
 import com.example.GreetingApp.model.AuthUser;
 import com.example.GreetingApp.repository.AuthUserRepository;
 import jdk.jshell.spi.ExecutionControl;
@@ -14,6 +19,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
+<<<<<<< HEAD
 public class AuthenticationService implements IAuthenticationService {
     @Autowired
     AuthUserRepository authUserRepository;
@@ -67,3 +73,19 @@ public class AuthenticationService implements IAuthenticationService {
     }
 }
 
+=======
+public class AuthenticationService  {
+    @Autowired
+    AuthUserRepository authUserRepository;
+
+    public AuthUser register(AuthUserDTO userDTO) throws Exception {
+            AuthUser user = new AuthUser(userDTO);
+            System.out.println(user);
+            authUserRepository.save(user);
+            return user;
+    }
+
+    }
+
+
+>>>>>>> UC9-Registertheuser

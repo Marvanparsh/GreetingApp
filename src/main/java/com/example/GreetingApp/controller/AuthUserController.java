@@ -1,6 +1,10 @@
 package com.example.GreetingApp.controller;
 import com.example.GreetingApp.DTO.AuthUserDTO;
+<<<<<<< HEAD
 import com.example.GreetingApp.DTO.LoginDTO;
+=======
+
+>>>>>>> UC9-Registertheuser
 import com.example.GreetingApp.DTO.ResponseDTO;
 import com.example.GreetingApp.model.AuthUser;
 import com.example.GreetingApp.service.AuthenticationService;
@@ -23,10 +27,14 @@ public class AuthUserController {
         return new ResponseEntity<>(responseUserDTO, HttpStatus.CREATED);
     }
 
+<<<<<<< HEAD
     @PostMapping("/login")
     public ResponseEntity<ResponseDTO> login(@Valid @RequestBody LoginDTO loginDTO){
         String result=authenticationService.login(loginDTO);
         ResponseDTO responseUserDTO=new ResponseDTO("Login successfully!!",result);
         return  new ResponseEntity<>(responseUserDTO,HttpStatus.OK);
     }
+=======
+
+>>>>>>> UC9-Registertheuser
 }

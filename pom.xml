@@ -50,6 +50,9 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> UC9-Registertheuser
 
 		<!-- JWT (JSON Web Token) Library -->
 		<dependency>
@@ -118,10 +121,13 @@
 	</dependencies>
 
 
+<<<<<<< HEAD
 =======
 	</dependencies>
 
 >>>>>>> 108ea1c6fa88e4ee178c1129bd0a65db984fb4fe
+=======
+>>>>>>> UC9-Registertheuser
 	<build>
 		<plugins>
 			<plugin>
