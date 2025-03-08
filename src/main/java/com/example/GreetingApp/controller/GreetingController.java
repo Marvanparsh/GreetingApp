@@ -21,7 +21,7 @@ public class GreetingController {
     public String getSimpleGreeting() {
         return greetingService.getSimpleGreeting();
     }
-    @PostMapping("/save")
+    @PostMapping("/savetorepo")
     public Greeting saveGreeting(
             @RequestParam(required = false) String firstName,
             @RequestParam(required = false) String lastName) {
@@ -40,14 +40,14 @@ public class GreetingController {
     public Greeting createGreeting(@RequestBody Greeting greeting) {
         return greetingRepository.save(greeting);
     }
-    @PutMapping("/{id}")
+    @PutMapping("update/{id}")
     public Greeting updateGreeting(@PathVariable Long id, @RequestBody Greeting greetingDetails) {
         Greeting greeting = greetingRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Greeting not found with id " + id));
         greeting.setMessage(greetingDetails.getMessage());
         return greetingRepository.save(greeting);
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<?> deleteGreeting(@PathVariable Long id) {
         Greeting greeting = greetingRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Greeting not found with id " + id));
@@ -58,5 +58,24 @@ public class GreetingController {
     public Greeting getGreetingById(@PathVariable Long id) {
         return greetingService.getGreetingById(id);
     }
+    @GetMapping("/repositoryshow/all")
+    public List<Greeting> getGreetings() {
+        return greetingService.getAllGreetings();
+    }
+
+    @PutMapping("/updaterepository/{id}")
+    public Greeting updateGreetinginRepository(@PathVariable Long id, @RequestBody Greeting updatedGreeting) {
+        return greetingService.updateGreeting(id, updatedGreeting.getMessage());
+    }
+    @DeleteMapping("deletefromrepo/{id}")
+    public ResponseEntity<String> deleteGreetingbyrepository(@PathVariable Long id) {
+        try {
+            greetingService.deleteGreetingbyrepo(id);
+            return ResponseEntity.ok("Greeting deleted successfully!");
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
 
 }

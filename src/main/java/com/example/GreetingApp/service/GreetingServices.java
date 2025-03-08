@@ -4,6 +4,9 @@ import com.example.GreetingApp.repository.GreetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class GreetingServices {
     @Autowired
@@ -28,5 +31,26 @@ public class GreetingServices {
     public Greeting getGreetingById(Long id) {
         return greetingRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Greeting not found with id: " + id));
+    }
+    public List<Greeting> getAllGreetings() {
+        return greetingRepository.findAll();
+    }
+    public Greeting updateGreeting(Long id, String newMessage) {
+        Optional<Greeting> existingGreeting = greetingRepository.findById(id);
+
+        if (existingGreeting.isPresent()) {
+            Greeting greeting = existingGreeting.get();
+            greeting.setMessage(newMessage);  // Update message
+            return greetingRepository.save(greeting);  // Save updated greeting
+        } else {
+            throw new RuntimeException("Greeting not found with id: " + id);
+        }
+    }
+    public void deleteGreetingbyrepo(Long id) {
+        if (greetingRepository.existsById(id)) {
+            greetingRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Greeting not found with id: " + id);
+        }
     }
 }
