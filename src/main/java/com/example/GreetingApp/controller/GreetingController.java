@@ -21,7 +21,7 @@ public class GreetingController {
     public String getSimpleGreeting() {
         return greetingService.getSimpleGreeting();
     }
-    @PostMapping("/savetorepo")
+    @PostMapping("/save")
     public Greeting saveGreeting(
             @RequestParam(required = false) String firstName,
             @RequestParam(required = false) String lastName) {
@@ -40,14 +40,14 @@ public class GreetingController {
     public Greeting createGreeting(@RequestBody Greeting greeting) {
         return greetingRepository.save(greeting);
     }
-    @PutMapping("update/{id}")
+    @PutMapping("/{id}")
     public Greeting updateGreeting(@PathVariable Long id, @RequestBody Greeting greetingDetails) {
         Greeting greeting = greetingRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Greeting not found with id " + id));
         greeting.setMessage(greetingDetails.getMessage());
         return greetingRepository.save(greeting);
     }
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteGreeting(@PathVariable Long id) {
         Greeting greeting = greetingRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Greeting not found with id " + id));
@@ -58,37 +58,5 @@ public class GreetingController {
     public Greeting getGreetingById(@PathVariable Long id) {
         return greetingService.getGreetingById(id);
     }
-    @GetMapping("/repositoryshow/all")
-    public List<Greeting> getGreetings() {
-        return greetingService.getAllGreetings();
-    }
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> UC9-Registertheuser
-@PutMapping("/updaterepository/{id}")
-public Greeting updateGreetinginRepository(@PathVariable Long id, @RequestBody Greeting updatedGreeting) {
-    return greetingService.updateGreeting(id, updatedGreeting.getMessage());
-}
-<<<<<<< HEAD
-=======
-    @PutMapping("/updaterepository/{id}")
-    public Greeting updateGreetinginRepository(@PathVariable Long id, @RequestBody Greeting updatedGreeting) {
-        return greetingService.updateGreeting(id, updatedGreeting.getMessage());
-    }
->>>>>>> 108ea1c6fa88e4ee178c1129bd0a65db984fb4fe
-=======
->>>>>>> UC9-Registertheuser
-    @DeleteMapping("deletefromrepo/{id}")
-    public ResponseEntity<String> deleteGreetingbyrepository(@PathVariable Long id) {
-        try {
-            greetingService.deleteGreetingbyrepo(id);
-            return ResponseEntity.ok("Greeting deleted successfully!");
-        } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-    }
-
 
 }
